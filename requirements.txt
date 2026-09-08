@@ -1,5 +1,5 @@
 pyrogram==2.0.106
-git+https://github.com/pytgcalls/pytgcalls
+py-tgcalls==0.9.7
 fastapi
 uvicorn
 yt-dlp
