@@ -2,7 +2,7 @@ import os
 import asyncio
 from pyrogram import Client, filters
 from pytgcalls import PyTgCalls
-from pytgcalls.types import AudioPiped
+from pytgcalls.types import MediaStream
 from yt_dlp import YoutubeDL
 from fastapi import FastAPI
 import uvicorn
@@ -56,9 +56,9 @@ async def play_music(client, message):
         stream_url = await loop.run_in_executor(None, extract_stream_url, query)
 
         # Stream directly into Telegram Voice Chat via PyTgCalls & FFmpeg
-        await call_py.join_group_call(
+        await call_py.play(
             message.chat.id,
-            AudioPiped(stream_url)
+            MediaStream(stream_url)
         )
         await status_msg.edit_text(f"🎶 Now Playing: {query}")
 
@@ -69,7 +69,7 @@ async def play_music(client, message):
 @bot.on_message(filters.command("stop") & filters.group)
 async def stop_music(client, message):
     try:
-        await call_py.leave_group_call(message.chat.id)
+        await call_py.leave_call(message.chat.id)
         await message.reply_text("⏹️ Playback stopped.")
     except Exception as e:
         await message.reply_text(f"❌ Error: {str(e)}")
