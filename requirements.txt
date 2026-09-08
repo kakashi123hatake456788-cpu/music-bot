@@ -1,6 +1,7 @@
 pyrogram
-pytgcalls
-yt-dlp
-tgcrypto
+pytgcalls==0.8.0
+asyncio
 fastapi
 uvicorn
+yt-dlp
+tgcrypto
