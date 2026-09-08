@@ -1,6 +1,5 @@
 pyrogram
-pytgcalls==0.8.0
-asyncio
+pytgcalls
 fastapi
 uvicorn
 yt-dlp
