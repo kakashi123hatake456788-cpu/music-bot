@@ -1,4 +1,4 @@
-pyrogram
+pyrogram==2.0.106
 git+https://github.com/pytgcalls/pytgcalls
 fastapi
 uvicorn
